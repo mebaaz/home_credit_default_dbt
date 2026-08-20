@@ -3,11 +3,11 @@
 
 select
     case
-        when floor(-a.DAYS_BIRTH/365) < 30 then '1_genc (21-29)'
-        when floor(-a.DAYS_BIRTH/365) < 40 then '2_otuzlar (30-39)'
-        when floor(-a.DAYS_BIRTH/365) < 50 then '3_kirklar (40-49)'
-        when floor(-a.DAYS_BIRTH/365) < 60 then '4_elliler (50-59)'
-        else                                    '5_altmis_arti (60+)'
+        when floor(-a.DAYS_BIRTH/365) < 30 then '21-29 Yas Grubu'
+        when floor(-a.DAYS_BIRTH/365) < 40 then '30-39 Yas Grubu'
+        when floor(-a.DAYS_BIRTH/365) < 50 then '40-49 Yas Grubu'
+        when floor(-a.DAYS_BIRTH/365) < 60 then '50-59 Yas Grubu'
+        else                                    '60+ Yas Grubu'
     end                                                             as yas_grubu,
     count(*)                                                        as musteri_sayisi,
     round(approx_quantiles(a.AMT_INCOME_TOTAL, 100)[offset(50)], 0) as gelir_medyan,
